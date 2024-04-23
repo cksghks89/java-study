@@ -24,7 +24,7 @@ public class Prob05 {
 				int inputNumber = scanner.nextInt();
 				
 				if (inputNumber == correctNumber) {
-					System.out.println("았습니다");
+					System.out.println("맞았습니다");
 					break;
 				} else if (inputNumber < correctNumber) {
 					System.out.println("더 높게");
