@@ -15,7 +15,23 @@ public class Prob05 {
 			// 정답 램덤하게 만들기
 			Random random = new Random();
 			int correctNumber = random.nextInt( 100 ) + 1;
-			System.out.println(correctNumber);
+			System.out.println("수를 결정하였습니다. 맞추어 보세요");
+			System.out.println("1-100");
+			
+			int count = 1;
+			while (true) {
+				System.out.print(count++ + ">>");
+				int inputNumber = scanner.nextInt();
+				
+				if (inputNumber == correctNumber) {
+					System.out.println("았습니다");
+					break;
+				} else if (inputNumber < correctNumber) {
+					System.out.println("더 높게");
+				} else {
+					System.out.println("더 낮게");
+				}
+			}
 
 			
 			//새 게임 여부 확인하기
