@@ -16,21 +16,23 @@ public class TV {
 	}
 	
 	public void channel(int channel) {
-		this.channel = (channel - 1) % 255 + 1;
+		if (channel < 0) this.channel = 0;
+		else if (channel > 255) this.channel = 255;
+		else this.channel = channel;
 	}
 	
 	public void channel(boolean up) {
-		this.channel += up ? 1 : -1;
-		this.channel(this.channel);
+		this.channel(this.channel + (up ? 1 : -1));
 	}
 	
 	public void volume(int volume) {
-		this.volume = volume % 101;
+		if (volume < 0) this.volume = 0;
+		else if (volume > 100) this.volume = 100;
+		else this.volume = volume;
 	}
 	
 	public void volume(boolean up) {
-		this.volume += up ? 1 : -1;
-		this.volume(this.volume);
+		this.volume(this.volume + (up ? 1 : -1));
 	}
 	
 	public void status() {
