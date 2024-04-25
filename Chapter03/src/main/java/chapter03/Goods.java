@@ -5,12 +5,21 @@ public class Goods {
 	private int price;
 	private int countStock;
 	private int countSold;
-	
+
 	public static int countOfGoods;
-	
+
 	public Goods() {
+	}
+
+	public Goods(String name, int price, int countStock, int countSold) {
 		// 클래스이름 생략 가능
 		countOfGoods = 10;
+
+		// 인스턴스 변수 초기화
+		this.name = name;
+		this.price = price;
+		this.countStock = countStock;
+		this.countSold = countSold;
 	}
 
 	@Override
@@ -49,7 +58,7 @@ public class Goods {
 	public void setCountSold(int countSold) {
 		this.countSold = countSold;
 	}
-	
+
 	public int calcDiscountPrice(float percentage) {
 		int result = (int) (price * percentage);
 		return result;

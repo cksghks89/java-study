@@ -2,11 +2,11 @@ package chapter03;
 
 public class GoodsApp {
 	public static void main(String[] args) {
-		Goods camera = new Goods();
-		camera.setName("nikon");
-		camera.setPrice(400_000);
-		camera.setCountStock(30);
-		camera.setCountSold(50);
+		Goods camera = new Goods("nikon", 400000, 10, 20);
+//		camera.setName("nikon");
+//		camera.setPrice(400_000);
+//		camera.setCountStock(30);
+//		camera.setCountSold(50);
 		
 		System.out.println(camera);
 		
