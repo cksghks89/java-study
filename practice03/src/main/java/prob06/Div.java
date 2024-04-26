@@ -1,7 +1,7 @@
 package prob06;
 
 public class Div extends Arith {
-	public int calculate() {
-		return a / b;
+	public Double calculate() {
+		return 1.0 * a / b;
 	}
 }

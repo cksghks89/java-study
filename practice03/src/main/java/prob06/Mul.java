@@ -1,7 +1,7 @@
 package prob06;
 
 public class Mul extends Arith {
-	public int calculate() {
+	public Integer calculate() {
 		return a * b;
 	}
 }

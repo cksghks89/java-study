@@ -9,5 +9,5 @@ public abstract class Arith {
 		this.b = b;
 	}
 	
-	public abstract int calculate();
+	public abstract Number calculate();
 }

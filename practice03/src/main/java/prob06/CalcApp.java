@@ -51,7 +51,7 @@ public class CalcApp {
 			
 			if (arith != null) {
 				arith.setValue(lValue, rValue);
-				int result = arith.calculate();
+				Number result = arith.calculate();
 				System.out.println( ">> " + result);
 			}
 		}
