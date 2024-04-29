@@ -33,7 +33,7 @@ public class MyStack {
 	}
 	
 	public String pop() {
-		if (pointer == 0) {
+		if (isEmpty()) {
 			throw new MyStackException();
 		}
 		
