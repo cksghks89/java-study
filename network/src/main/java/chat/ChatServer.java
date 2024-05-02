@@ -27,7 +27,6 @@ public class ChatServer {
 				Socket socket = serverSocket.accept(); // blocking
 				new ChatServerThread(socket, listWriters).start();
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {

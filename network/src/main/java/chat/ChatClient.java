@@ -33,7 +33,6 @@ public class ChatClient {
 
 			Thread.sleep(500);
 			while (true) {
-				System.out.print(">>");
 				String input = scanner.nextLine();
 
 				if ("quit".equals(input)) {

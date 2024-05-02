@@ -24,14 +24,17 @@ public class ChatServerThread extends Thread {
 
 	@Override
 	public void run() {
+		BufferedReader br = null;
+		PrintWriter pw = null;
+
 		try {
 			InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 			String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
 			int remotePort = inetRemoteSocketAddress.getPort();
 			ChatServer.log("connected by client[" + remoteHostAddress + ":" + remotePort + "]");
 
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
+			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
 
 			while (true) {
 				String request = br.readLine();
@@ -59,10 +62,13 @@ public class ChatServerThread extends Thread {
 				}
 			}
 		} catch (UnknownError e) {
+			doQuit(pw);
 			ChatServer.log(e.getMessage());
 		} catch (SocketException e) {
+			doQuit(pw);
 			ChatServer.log("SocketException : " + e);
 		} catch (IOException e) {
+			doQuit(pw);
 			ChatServer.log("IOException " + e);
 		} finally {
 			try {

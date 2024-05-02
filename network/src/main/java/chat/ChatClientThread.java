@@ -34,11 +34,9 @@ public class ChatClientThread extends Thread {
 				if ("message".equals(tokens[0])) {
 					System.out.println(tokens[1]);
 				} else if ("join".equals(tokens[0])) {
-					System.out.println("채팅방에 입장하신 것을 환영합니다.");
+					System.out.println("입장하였습니다. 즐거운 채팅 되세요~!");
 				}
 			}
-		} catch (UnknownError e) {
-			ChatClient.log("Unknown Error");
 		} catch (IOException e) {
 			// Socket closed
 		}
