@@ -47,6 +47,8 @@ public class EchoClient {
 
 				System.out.println("<<" + data);
 			}
+		} catch (SocketException e) {
+			log("[client] Socket Exception : " + e);
 		} catch (IOException e) {
 			log("error : " + e);
 		} finally {

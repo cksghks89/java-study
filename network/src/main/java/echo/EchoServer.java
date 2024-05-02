@@ -14,7 +14,7 @@ import java.net.SocketException;
 
 public class EchoServer {
 	public static final int PORT = 6000;
-	
+
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
 
@@ -23,6 +23,8 @@ public class EchoServer {
 			serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT), 10);
 			Socket socket = serverSocket.accept(); // blocking
 
+			BufferedReader br = null;
+			PrintWriter pw = null;
 			try {
 				InetSocketAddress inetRemoteSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
 				String remoteHostAddress = inetRemoteSocketAddress.getAddress().getHostAddress();
@@ -32,8 +34,8 @@ public class EchoServer {
 				InputStream is = socket.getInputStream();
 				OutputStream os = socket.getOutputStream();
 
-				PrintWriter pw = new PrintWriter(new OutputStreamWriter(os, "utf-8"), true);
-				BufferedReader br = new BufferedReader(new InputStreamReader(is));
+				pw = new PrintWriter(new OutputStreamWriter(os, "utf-8"), true);
+				br = new BufferedReader(new InputStreamReader(is));
 
 				while (true) {
 					String data = br.readLine(); // blocking
@@ -46,7 +48,7 @@ public class EchoServer {
 					pw.println(data);
 				}
 			} catch (SocketException e) {
-				log("[server] suddenly closed by client");
+				log("[server] Socket Exception" + e);
 			} catch (IOException e) {
 				log("[server] error : " + e);
 			} finally {
