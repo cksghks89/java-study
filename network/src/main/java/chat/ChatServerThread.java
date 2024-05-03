@@ -49,6 +49,7 @@ public class ChatServerThread extends Thread {
 				// 프로토콜 분석
 				String[] tokens = request.split(":", 2);
 
+				boolean isEnd = false;
 				switch (tokens[0]) {
 				case "join":
 					doJoin(tokens[1], pw);
@@ -58,6 +59,7 @@ public class ChatServerThread extends Thread {
 					break;
 				case "quit":
 					doQuit(pw);
+					isEnd = true;
 					break;
 				case "passadmin":
 					if (me.isAdmin()) {
@@ -67,6 +69,8 @@ public class ChatServerThread extends Thread {
 				default:
 					throw new UnknownError("UnknownException (" + tokens[0] + ")");
 				}
+				if (isEnd)
+					break;
 			}
 		} catch (UnknownError e) {
 			doQuit(pw);

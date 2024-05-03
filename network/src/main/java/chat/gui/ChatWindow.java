@@ -130,6 +130,7 @@ public class ChatWindow {
 
 	private void finish() {
 		// exit java application & quit
+		pw.println("quit");
 		System.exit(0);
 	}
 
