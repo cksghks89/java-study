@@ -12,6 +12,7 @@ import java.util.List;
 public class ChatServer {
 	public static final int PORT = 6000;
 	private static List<Writer> listWriters = new ArrayList<>();
+	private static List<ChatUser> users = new ArrayList<>();
 
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
@@ -25,7 +26,7 @@ public class ChatServer {
 
 			while (true) {
 				Socket socket = serverSocket.accept(); // blocking
-				new ChatServerThread(socket, listWriters).start();
+				new ChatServerThread(socket, listWriters, users).start();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
