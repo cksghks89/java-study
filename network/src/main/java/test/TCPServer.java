@@ -20,6 +20,10 @@ public class TCPServer {
 			// 1. Server Socket 생성
 			serverSocket = new ServerSocket();
 
+			// 1-1. FIN_WAIT2 -> TIME_WAIT (전환 과정에서는 포트바인딩이 안될 수 있다)
+			// 이런 상황에서도소켓 포트 할당이 가능하도록 하기위해 아래와 같은 코드를 작성할 수 있다.
+			serverSocket.setReuseAddress(true);
+
 			// 2. 바인딩(binding)
 			// Socket에(IPAddress + Port)를 바인딩한다.
 			// 바인딩하는 IP주소를 0.0.0.0으로 설정하여 특정 호스트 IP를 바인딩 하지 않는다.
@@ -53,9 +57,14 @@ public class TCPServer {
 
 					String data = new String(buffer, 0, readByteCount, "utf-8");
 					System.out.println("[server] received : " + data);
-					
-					
+
 					// 6. 데이터 쓰기
+					// SO_TIMEOUT test
+//					try {
+//						Thread.sleep(4000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
 					os.write(data.getBytes("utf-8"));
 				}
 			} catch (SocketException e) {
