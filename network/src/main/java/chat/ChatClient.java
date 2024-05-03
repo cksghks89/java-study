@@ -31,7 +31,6 @@ public class ChatClient {
 
 			new ChatClientThread(br).start();
 
-			Thread.sleep(500);
 			while (true) {
 				String input = scanner.nextLine();
 
@@ -44,8 +43,6 @@ public class ChatClient {
 			}
 		} catch (IOException e) {
 			log("errer : " + e);
-		} catch (InterruptedException e) {
-			log("error : " + e);
 		} finally {
 			try {
 				if (socket != null && !socket.isClosed()) {
