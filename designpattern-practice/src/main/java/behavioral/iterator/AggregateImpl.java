@@ -12,7 +12,6 @@ public class AggregateImpl<E> implements Aggregate<E> {
 		return new IteratorImpl();
 	}
 
-	
 	// Iterator 는 한 번만 순회하고 끝내야 한다 (재사용 x)
 	private class IteratorImpl implements Iterator<E> {
 		int index = 0;
